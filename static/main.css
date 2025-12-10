@@ -56,6 +56,11 @@ nav .nav-btn:hover {
     background-color: #dce7ff;
 }
 
+.guide-btn {
+    border: none;
+    cursor: pointer;
+}
+
 .content-container {
     display: flex;
     width: 100%;
@@ -63,10 +68,15 @@ nav .nav-btn:hover {
 }
 
 .guide-section {
-    width: 33.3%;
+    width: 20%;
     padding: 40px;
     background: #eaf0ff;
     border-right: 2px solid #c8d4f7;
+    display: none;
+}
+
+.guide-section.show {
+    display: block;
 }
 
 .guide-section h2 {
@@ -80,9 +90,8 @@ nav .nav-btn:hover {
 }
 
 .booking-section {
-    width: 66.7%;
+    width: 100%;
     padding: 40px;
-    background: #ffffff;
 }
 
 .booking-placeholder {
@@ -90,16 +99,4 @@ nav .nav-btn:hover {
     font-size: 1.2rem;
     text-align: center;
     padding-top: 150px;
-}
-
-
-@media (max-width: 768px) {
-    .content-container {
-        flex-direction: column;
-    }
-
-    .guide-section,
-    .booking-section {
-        width: 100%;
-    }
 }
