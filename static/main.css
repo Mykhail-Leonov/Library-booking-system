@@ -10,13 +10,11 @@ body {
     color: #333;
 }
 
-/* Visual indicator for buttons selected via keyboard */
+/* Adds clear visual inducatior when buttons are selected using keyboard Tab */
 .nav-btn:focus {
     outline: 3px solid #ffbf00;
     outline-offset: 3px;
 }
-
-
 
 header {
     width: 100%;
@@ -41,15 +39,15 @@ header {
 
 nav .nav-btn {
     margin-left: 15px;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 1rem;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 1.1rem;
     background-color: #fff;
     color: #1f3c88;
     text-decoration: none;
     transition: 0.3s ease;
     display: inline-block;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 nav .nav-btn:hover {
@@ -60,6 +58,13 @@ nav .nav-btn:hover {
     border: none;
     cursor: pointer;
 }
+
+.guide-btn:focus {
+    outline: 3px solid #ffbf00;
+    outline-offset: 3px;
+}
+
+
 
 .content-container {
     display: flex;
@@ -99,4 +104,25 @@ nav .nav-btn:hover {
     font-size: 1.2rem;
     text-align: center;
     padding-top: 150px;
+}
+
+.guide-left {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    background-color: #fff;
+    color: #1f3c88;
+    padding: 16px 8px;
+    border-radius: 0 8px 8px 0;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-weight: 600;
+    font-size: 1.15rem;
+    cursor: pointer;
+    border: 2px solid #1f3c88;
+    transition: 0.3s;
+}
+
+.guide-left:hover {
+    background-color: #dce7ff;
 }
