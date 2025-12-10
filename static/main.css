@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f9fc;
+    color: #333;
+}
+
+/* Visual indicator for buttons selected via keyboard */
+.nav-btn:focus {
+    outline: 3px solid #ffbf00;
+    outline-offset: 3px;
+}
+
+
+
+header {
+    width: 100%;
+    background-color: #1f3c88;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 90px;
+    height: auto;
+}
+
+
+nav .nav-btn {
+    margin-left: 15px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #1f3c88;
+    text-decoration: none;
+    transition: 0.3s ease;
+    display: inline-block;
+    font-weight: 500;
+}
+
+nav .nav-btn:hover {
+    background-color: #dce7ff;
+}
+
+.content-container {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 70px);
+}
+
+.guide-section {
+    width: 33.3%;
+    padding: 40px;
+    background: #eaf0ff;
+    border-right: 2px solid #c8d4f7;
+}
+
+.guide-section h2 {
+    margin-bottom: 15px;
+    color: #1f3c88;
+}
+
+.guide-section p {
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.booking-section {
+    width: 66.7%;
+    padding: 40px;
+    background: #ffffff;
+}
+
+.booking-placeholder {
+    color: #777;
+    font-size: 1.2rem;
+    text-align: center;
+    padding-top: 150px;
+}
+
+
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column;
+    }
+
+    .guide-section,
+    .booking-section {
+        width: 100%;
+    }
+}
