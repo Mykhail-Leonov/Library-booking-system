@@ -26,3 +26,40 @@ def init_user_table():
     )
     conn.commit()
     conn.close()
+
+# Create New User
+
+def create_user(name, student_id, email, password):
+    conn = get_db_connection()
+
+    existing = conn.execute(
+        "SELECT * FROM users WHERE student_id = ? OR email = ?",
+        (student_id, email),
+    ).fetchone()
+
+    if existing:
+        conn.close()
+        return False
+
+    conn.execute(
+        """
+        INSERT INTO users (name, student_id, email, password)
+        VALUES (?, ?, ?, ?)
+        """,
+        (name, student_id, email, password),
+    )
+    conn.commit()
+    conn.close()
+    return True
+
+
+# Validate Login
+
+def validate_login(student_id, password):
+    conn = get_db_connection()
+    user = conn.execute(
+        "SELECT * FROM users WHERE student_id = ? AND password = ?",
+        (student_id, password),
+    ).fetchone()
+    conn.close()
+    return user
