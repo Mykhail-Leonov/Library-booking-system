@@ -1,5 +1,6 @@
 from flask import Flask, send_from_directory
 from flask_cors import CORS
+from userdatabase import init_user_table
 
 app = Flask(__name__, static_folder="static")
 CORS(app)
@@ -27,4 +28,5 @@ def serve_static(path):
 # Run app
 
 if __name__ == "__main__":
+    init_user_table()
     app.run(debug=True)
