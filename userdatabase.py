@@ -1,4 +1,5 @@
 import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
 
 DATABASE = "users.db"
 
@@ -41,12 +42,14 @@ def create_user(name, student_id, email, password):
         conn.close()
         return False
 
+    hashed_pw = generate_password_hash(password)
+
     conn.execute(
         """
         INSERT INTO users (name, student_id, email, password)
         VALUES (?, ?, ?, ?)
         """,
-        (name, student_id, email, password),
+        (name, student_id, email, hashed_pw),
     )
     conn.commit()
     conn.close()
@@ -58,8 +61,15 @@ def create_user(name, student_id, email, password):
 def validate_login(student_id, password):
     conn = get_db_connection()
     user = conn.execute(
-        "SELECT * FROM users WHERE student_id = ? AND password = ?",
-        (student_id, password),
+        "SELECT * FROM users WHERE student_id = ?",
+        (student_id,),
     ).fetchone()
     conn.close()
-    return user
+
+    if not user:
+        return None
+    
+    if check_password_hash(user["password"], password):
+        return user
+    
+    return None
