@@ -38,6 +38,15 @@ def register():
 
     if not name or not student_id or not email or not password:
         return jsonify({"error": "All fields are required."}), 400
+    
+    if len(student_id) != 8:
+        return jsonify({"error": "Student ID must be 8 digits."}), 400
+
+    if "@bradfordcollege.ac.uk" not in email:
+        return jsonify({"error": "Email must be a valid college email."}), 400
+
+    if len(password) < 8:
+        return jsonify({"error": "Password must be at least 8 characters."}), 400
 
     success = create_user(name, student_id, email, password)
 
