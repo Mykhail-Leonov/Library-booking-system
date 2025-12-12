@@ -45,10 +45,7 @@ def create_user(name, student_id, email, password):
     hashed_pw = generate_password_hash(password)
 
     conn.execute(
-        """
-        INSERT INTO users (name, student_id, email, password)
-        VALUES (?, ?, ?, ?)
-        """,
+        "INSERT INTO users (name, student_id, email, password) VALUES (?, ?, ?, ?)",
         (name, student_id, email, hashed_pw),
     )
     conn.commit()
