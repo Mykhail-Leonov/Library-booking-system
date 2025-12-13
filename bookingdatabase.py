@@ -98,3 +98,31 @@ def create_booking(user_id, building, booth, date_str, time_slot):
         return False, "This slot already booked"
     finally:
         conn.close()
+
+
+
+
+# Retrieve all bookings for a user.
+def get_user_bookings(user_id):
+    conn = get_db_connection()
+    rows = conn.execute(
+        """
+        SELECT id, building, booth, date, time_slot
+        FROM bookings
+        WHERE user_id = ?
+        ORDER BY date
+        """,
+        (user_id,)
+    ).fetchall()
+    conn.close()
+    return rows
+
+# Delete a booking by ID.
+def delete_booking(booking_id, user_id):
+    conn = get_db_connection()
+    conn.execute(
+        "DELETE FROM bookings WHERE id = ? AND user_id = ?",
+        (booking_id, user_id)
+    )
+    conn.commit()
+    conn.close()

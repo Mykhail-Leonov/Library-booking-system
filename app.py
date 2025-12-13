@@ -9,7 +9,9 @@ from bookingdatabase import (
     get_allowed_dates,
     get_month_summary,
     get_booked_slots,
-    create_booking
+    create_booking,
+    get_user_bookings,
+    delete_booking,
 )
 
 
@@ -131,6 +133,34 @@ def booking_create():
     if not ok:
         return jsonify({"error": msg}), 409
     return jsonify({"message": msg})
+
+
+
+
+
+
+# Profile APIs
+@app.route("/profile")
+def serve_profile():
+    return send_from_directory("static", "profile.html")
+
+
+@app.route("/api/profile/bookings")
+def profile_bookings():
+    user_id = request.args["user_id"]
+    rows = get_user_bookings(user_id)
+    return jsonify([dict(r) for r in rows])
+
+
+@app.route("/api/bookings/<int:booking_id>", methods=["DELETE"])
+def booking_delete(booking_id):
+    user_id = request.args.get("user_id")
+    delete_booking(booking_id, user_id)
+    return jsonify({"message": "Booking cancelled"})
+
+
+
+
 
 
 

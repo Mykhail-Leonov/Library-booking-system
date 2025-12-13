@@ -27,9 +27,12 @@
     <section class="guide-section">
       <h2>How to Book Your Booth</h2>
       <p>1. Register or login using the buttons above.</p>
-      <p>2. Search for available booth slots on the booking section.</p>
-      <p>3. Select your preferred booth and confirm booking.</p>
-      <p>4. You will receive confirmation details via email.</p>
+      <p>2. Select a building in which you want to book a booth.</p>
+      <p>3. Select the booth by pressing on it.</p>
+      <p>4. Select the day within next 7 days on which you want to make a booking.</p>
+      <p>Green = available, Yellow = partially booked, Red = fully booked. </p>
+      <p>5. Select an available time slot for your booking.</p>
+      <p>6. You will see confirmation message. You successfully booked a booth!</p>
     </section>
 
     <!-- Booking section -->
@@ -92,7 +95,7 @@
       if (user) {
         // If User logged in - show Student ID and Logout
         navbar.innerHTML = `
-            <span class="nav-btn">${user.student_id}</span>
+            <a href="/profile" class="nav-btn">${user.student_id}</a>
             <button class="nav-btn" id="logoutBtn">Logout</button>
         `;
 
