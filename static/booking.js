@@ -1,7 +1,17 @@
 // Booths in each building
 const BOOTHS = {
-  "David Hockney": ["DHB A", "DHB B", "DHB C", "DHB D"],
-  "TG": ["TG 1", "TG 2", "TG 3"]
+  "David Hockney": ["DHB A - Capacity: 6", "DHB B - Capacity: 4", "DHB C - Capacity: 4", "DHB D - Capacity: 4"],
+  "TG": ["TG 1 - Capacity: 4", "TG 2 - Capacity: 4", "TG 3 - Capacity: 4"]
+};
+
+const BOOTH_IMAGES = {
+  "DHB A - Capacity: 6": "/static/booth-images/DHB_A.jpg",
+  "DHB B - Capacity: 4": "/static/booth-images/DHB_B.jpg",
+  "DHB C - Capacity: 4": "/static/booth-images/DHB_C.jpg",
+  "DHB D - Capacity: 4": "/static/booth-images/DHB_D.jpg",
+  "TG 1 - Capacity: 4": "/static/booth-images/TG_1.jpg",
+  "TG 2 - Capacity: 4": "/static/booth-images/TG_2.jpg",
+  "TG 3 - Capacity: 4": "/static/booth-images/TG_3.jpg"
 };
 
 let selectedBuilding = "";
@@ -43,6 +53,7 @@ $("buildingSelect").addEventListener("change", function () {
 
     btn.onclick = function () {
       selectedBooth = booth;
+      showBoothImage(booth);
 
       document.querySelectorAll(".booth-btn").forEach(b =>
         b.classList.remove("active")
@@ -55,6 +66,24 @@ $("buildingSelect").addEventListener("change", function () {
     $("boothList").appendChild(btn);
   });
 });
+
+/* Booths images */
+function showBoothImage(booth) {
+  const img = document.getElementById("boothImage");
+  const src = BOOTH_IMAGES[booth];
+
+  if (!src) {
+    img.style.display = "none";
+    return;
+  }
+
+  img.src = src;
+  img.alt = `Image of booth ${booth}`;
+  img.style.display = "block";
+}
+
+
+
 
 /*Calendar */
 

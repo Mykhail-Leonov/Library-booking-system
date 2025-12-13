@@ -204,6 +204,17 @@ nav .nav-btn:hover {
     border-color: #1f3c88;
 }
 
+
+
+#boothImage {
+    max-width: 100%;
+    border-radius: 12px;
+    border: 2px solid #c8d4f7;
+}
+
+
+
+
 /* Calendar */
 
 .calendar-head {
