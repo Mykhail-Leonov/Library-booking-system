@@ -16,6 +16,21 @@ body {
     outline-offset: 3px;
 }
 
+/* For booking aswell */
+.booth-btn:focus,
+.calendar-button:focus,
+.cal-cell.day:focus,
+.slot-btn:focus,
+.booking-select:focus {
+    outline: 3px solid #ffbf00;
+    outline-offset: 3px;
+}
+
+
+
+
+
+
 header {
     width: 100%;
     background-color: #1f3c88;
