@@ -99,12 +99,6 @@ nav .nav-btn:hover {
     padding: 40px;
 }
 
-.booking-placeholder {
-    color: #777;
-    font-size: 1.2rem;
-    text-align: center;
-    padding-top: 150px;
-}
 
 .guide-left {
     position: fixed;
@@ -191,14 +185,14 @@ nav .nav-btn:hover {
 
 /* Calendar */
 
-.cal-head {
+.calendar-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
 }
 
-.cal-btn {
+.calendar-button {
     border: 2px solid #1f3c88;
     background: #fff;
     color: #1f3c88;
@@ -208,24 +202,24 @@ nav .nav-btn:hover {
     font-weight: 800;
 }
 
-.cal-btn:disabled {
+.calendar-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-.cal-title {
+.calendar-title {
     font-weight: 900;
     color: #1f3c88;
 }
 
-.cal-weekdays,
-.cal-grid {
+.calendar-weekdays,
+.calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 6px;
 }
 
-.cal-weekdays {
+.calendar-weekdays {
     color: #1f3c88;
     font-weight: 800;
     margin-bottom: 6px;

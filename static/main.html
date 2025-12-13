@@ -53,18 +53,18 @@
 
       <!-- Calendar with slots -->
       <div class="booking-right">
-        <div class="cal-head">
-          <button class="cal-btn" id="prevMonthBtn" type="button">◀</button>
-          <div class="cal-title" id="monthLabel"></div>
-          <button class="cal-btn" id="nextMonthBtn" type="button">▶</button>
+        <div class="calendar-head">
+          <button class="calendar-button" id="PreviousMonthButton" type="button">◀</button>
+          <div class="calendar-title" id="MonthLabel"></div>
+          <button class="calendar-button" id="NextMonthButton" type="button">▶</button>
         </div>
 
-        <div class="cal-weekdays">
+        <div class="calendar-weekdays">
           <div>Mon</div><div>Tue</div><div>Wed</div>
           <div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
         </div>
 
-        <div class="cal-grid" id="calendarGrid"></div>
+        <div class="calendar-grid" id="Calendar-grid"></div>
 
         <h3 class="slots-title">Time slots</h3>
         <div class="slots" id="slotsBox"></div>
@@ -114,6 +114,9 @@
     // Run on page load
     updateNavbar();
   </script>
+
+<script src="/static/booking.js"></script>
+
 
 </body>
 
