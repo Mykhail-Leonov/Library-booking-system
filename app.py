@@ -2,6 +2,17 @@ from flask import Flask, send_from_directory, request, jsonify
 from flask_cors import CORS
 from userdatabase import init_user_table, create_user, validate_login
 
+
+from bookingdatabase import (
+    init_booking_table,
+    TIME_SLOTS,
+    get_allowed_dates,
+    get_month_summary,
+    get_booked_slots,
+    create_booking
+)
+
+
 app = Flask(__name__, static_folder="static")
 CORS(app)
 
@@ -83,9 +94,49 @@ def login():
         }
     }), 200
 
+# Booking APIs
+@app.route("/api/bookings/month")
+def booking_month():
+    booth = request.args["booth"]
+    year = int(request.args["year"])
+    month = int(request.args["month"])
+
+    return jsonify({
+        "summary": get_month_summary(booth, year, month),
+        "allowed_dates": list(get_allowed_dates()),
+        "time_slots": TIME_SLOTS,
+        "total_slots": len(TIME_SLOTS)
+    })
+
+@app.route("/api/bookings/slots")
+def booking_slots():
+    return jsonify({
+        "booked_slots": get_booked_slots(
+            request.args["booth"],
+            request.args["date"]
+        ),
+        "time_slots": TIME_SLOTS
+    })
+
+@app.route("/api/bookings", methods=["POST"])
+def booking_create():
+    data = request.get_json()
+    ok, msg = create_booking(
+        data["user_id"],
+        data["building"],
+        data["booth"],
+        data["date"],
+        data["time_slot"]
+    )
+    if not ok:
+        return jsonify({"error": msg}), 409
+    return jsonify({"message": msg})
+
+
 
 # Run app
 
 if __name__ == "__main__":
     init_user_table()
+    init_booking_table()
     app.run(debug=True)
