@@ -66,14 +66,16 @@ Ensure that you have installed:
     - http://127.0.0.1:5000 
 
 ## How the Solution Meets Client Requirements
+### Operational Requirements
 - Secure authentication with hashed passwords
 - SQL injection security via parameterised SQL queries
 - Prevention of double bookings via server-side validation
 - Server-side input validation for registration, login and bookings.
 - Real-time availability updates
+- Reliable data storage in SQLite
+### User-Centred Design Requirements
 - Dynamic interface
 - Clear availability feedback via colors
-- Reliable data storage in SQLite
 - Reduced number of booking steps
 - Calendar-based booking
 - Responsive design for mobile and desktop

@@ -43,12 +43,13 @@
     </div>
   </div>
 </main>
-<!-- JS logic -->
+
+<!-- Script for profile and bookings -->
 <script>
 function getUser() {
   return JSON.parse(localStorage.getItem("user"));
 }
-
+// Update nav bar
 function updateNavbar() {
   const nav = document.getElementById("navbar");
   const user = getUser();
@@ -68,7 +69,7 @@ function updateNavbar() {
     window.location.href = "/login";
   };
 }
-
+// Load profile info
 function loadProfile() {
   const user = getUser();
 
@@ -77,6 +78,8 @@ function loadProfile() {
   document.getElementById("studentId").textContent = user.student_id;
 }
 
+
+// Load bookings
 function loadBookings() {
   const user = getUser();
 
@@ -107,6 +110,8 @@ function loadBookings() {
     });
 }
 
+
+// Cancel booking
 function cancelBooking(id) {
   const user = getUser(); // from localStorage
   if (!confirm("Cancel this booking?")) return;

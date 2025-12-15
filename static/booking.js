@@ -90,10 +90,11 @@ function showBoothImage(booth) {
 function loadMonth() {
   fetch(`/api/bookings/month?booth=${selectedBooth}&year=${monthView.getFullYear()}&month=${monthView.getMonth() + 1}`)
     .then(res => res.json())
-    .then(data => renderCalendar(data));
+    .then(data => RenderCalendar(data));
 }
 
-function renderCalendar(data) {
+
+function RenderCalendar(data) {
   $("MonthLabel").textContent =
     monthView.toLocaleDateString(undefined, { month: "long", year: "numeric" });
 
